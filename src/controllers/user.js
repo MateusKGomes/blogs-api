@@ -6,7 +6,6 @@ const createUser = async (req, res) => {
     const verifyEmail = await userServices.findUser(user.email, user.password);
     if (!verifyEmail) {
         await userServices.createUser(user);
-        console.log('user', user);
     const { password: _password, ...userWithoutpassword } = user;
         const token = createToken(userWithoutpassword);
         return res.status(201).json({ token });
@@ -17,6 +16,12 @@ const createUser = async (req, res) => {
     }
 };
 
+const findAll = async (req, res) => {
+    const users = await userServices.users;
+    return res.status(200).json(users);
+};
+
 module.exports = {
     createUser,
+    findAll,
 };

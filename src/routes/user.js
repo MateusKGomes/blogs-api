@@ -1,6 +1,7 @@
 const express = require('express');
 const userControllers = require('../controllers/user');
 const { displayNameValidation, emailValidation } = require('../middlewares/userValidations');
+const validateJWT = require('../middlewares/validateJWT');
 
 const userRouter = express.Router();
 
@@ -10,5 +11,7 @@ displayNameValidation,
 emailValidation,
 userControllers.createUser,
 );
+
+userRouter.get('/', validateJWT, userControllers.findAll);
 
 module.exports = userRouter;

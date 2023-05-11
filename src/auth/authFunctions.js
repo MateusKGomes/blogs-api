@@ -4,7 +4,7 @@ const secret = process.env.JWT_SECRET || 'segredo';
 
 const JWT_CONFIG = {
     algorithm: 'HS256',
-    expiresIn: '10m',
+    expiresIn: '50m',
 };
 
 const verifyToken = (token) => jwt.verify(token, secret);
