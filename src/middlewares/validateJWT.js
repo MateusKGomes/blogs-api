@@ -4,8 +4,8 @@ const validateJwt = (req, res, next) => {
     try {
         const { authorization: token } = req.headers;
         if (!token) { return res.status(401).json({ message: 'Token não encontrado' }); }
-
-        const payload = verifyToken(token);
+        console.log(token);
+        const payload = verifyToken('token', token);
         req.payload = payload;
 
         next();
