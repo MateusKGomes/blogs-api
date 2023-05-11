@@ -9,8 +9,9 @@ categoryRouter.post(
 '/',
 validateJWT,
 nameValidation,
-
 categoryControllers.createCategory,
 );
+
+categoryRouter.get('/', validateJWT, categoryControllers.getAllCategories);
 
 module.exports = categoryRouter;
