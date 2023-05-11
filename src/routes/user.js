@@ -13,5 +13,6 @@ userControllers.createUser,
 );
 
 userRouter.get('/', validateJWT, userControllers.findAll);
+userRouter.get('/:id', validateJWT, userControllers.findById);
 
 module.exports = userRouter;

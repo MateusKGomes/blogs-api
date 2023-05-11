@@ -13,8 +13,12 @@ const users = User.findAll({
     },
 });
 
+const findById = (id) => User.findByPk(id, { attributes: { exclude: ['password'] },
+});
+
 module.exports = {
     createUser,
     findUser,
     users,
+    findById,
 };
