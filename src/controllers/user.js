@@ -23,7 +23,6 @@ const findAll = async (req, res) => {
 
 const findById = async (req, res) => {
     const { id } = req.params;
-    console.log('id', id);
     const user = await userServices.findById(id);
     if (!user) {
         return res.status(404).json({ message: 'User does not exist' });
