@@ -22,7 +22,11 @@ const BlogsPostsSchema = (sequelize, DataTypes) => {
         },
         userId: {
             allowNull: false,
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'User',
+                key: 'id'
+            }
         },
         published: {
             type: DataTypes.DATE,
