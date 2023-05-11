@@ -12,7 +12,7 @@ const UserSchema = (sequelize, DataTypes) => {
             allowNull: false,
             type: DataTypes.INTEGER,
         },
-        display_name: {
+        displayName: {
             allowNull: false,
             type: DataTypes.STRING
         },
@@ -29,7 +29,8 @@ const UserSchema = (sequelize, DataTypes) => {
         }
     },{
         timestamps: false,
-        tableName: 'User',
+        tableName: 'users',
+        underscored: true,
     })
     return user;
 };
