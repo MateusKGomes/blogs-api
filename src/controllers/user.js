@@ -17,7 +17,7 @@ const createUser = async (req, res) => {
 };
 
 const findAll = async (req, res) => {
-    const users = await userServices.users;
+    const users = await userServices.users();
     return res.status(200).json(users);
 };
 

@@ -10,7 +10,7 @@ attributes: {
     exclude: ['password'],
 } });
 
-const users = User.findAll({
+const users = () => User.findAll({
     attributes: {
         exclude: ['password'],
     },

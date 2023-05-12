@@ -1,4 +1,3 @@
-console.log('\n\n\n', process.env, '\n\n\n');
 const environment = process.env.NODE_ENV || 'test';
 
 const suffix = {
