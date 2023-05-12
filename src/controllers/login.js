@@ -11,7 +11,7 @@ const login = async (req, res) => {
             .status(400)
             .json({ message: 'Invalid fields' });
     }
-    const token = createToken(email);
+    const token = createToken(userEmail);
     return res.status(200).json({ token });
 };
 

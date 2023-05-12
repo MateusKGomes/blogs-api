@@ -2,6 +2,7 @@ const express = require('express');
 const loginRouter = require('./routes/login');
 const userRouter = require('./routes/user');
 const categoryRouter = require('./routes/category');
+const postRouter = require('./routes/post');
 
 // ...
 
@@ -18,6 +19,7 @@ app.get('/status', (req, res) => res.status(200).json({ message: 'On fire!' }));
 app.use('/user', userRouter);
 app.use('/login', loginRouter);
 app.use('/categories', categoryRouter);
+app.use('/post', postRouter);
 
 // ...
 

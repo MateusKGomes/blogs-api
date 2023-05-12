@@ -5,7 +5,10 @@ const createUser = async (body) => {
     return newUser;
 };
 
-const findUser = (email, password) => User.findOne({ where: { email, password } });
+const findUser = (email, password) => User.findOne({ where: { email, password },
+attributes: {
+    exclude: ['password'],
+} });
 
 const users = User.findAll({
     attributes: {
