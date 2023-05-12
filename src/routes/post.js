@@ -7,5 +7,6 @@ const postRouter = express.Router();
 
 postRouter.post('/', validateJWT, postValidation, postController.createPost);
 postRouter.get('/', validateJWT, postController.getAllPosts);
+postRouter.get('/:id', validateJWT, postController.findPostById);
 
 module.exports = postRouter;
