@@ -74,13 +74,13 @@ const updatePost = async (title, content, id) => {
 };
 
 const deletePost = async (id) => {
-    const post = await BlogPost.destroy({
-        where: { id },
-    });
     const postId = await getPostById(id);
     if (postId.type) {
         return { type: 404, message: { message: 'Post does not exist' } };
     }
+    const post = await BlogPost.destroy({
+        where: { id },
+    });
     const { userId } = postId.message.dataValues;
     return { type: null, message: post, userId };
 };
