@@ -9,5 +9,6 @@ postRouter.post('/', validateJWT, postValidation, categoryValidation, postContro
 postRouter.get('/', validateJWT, postController.getAllPosts);
 postRouter.get('/:id', validateJWT, postController.findPostById);
 postRouter.put('/:id', validateJWT, postValidation, postController.updatePost);
+postRouter.delete('/:id', validateJWT, postController.deletePost);
 
 module.exports = postRouter;

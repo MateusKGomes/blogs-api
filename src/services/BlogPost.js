@@ -73,4 +73,17 @@ const updatePost = async (title, content, id) => {
     return postId;
 };
 
-module.exports = { createPost, getAllPosts, getPostById, updatePost };
+const deletePost = async (id) => {
+    const post = BlogPost.destroy({
+        where: { id },
+    });
+    const postId = await getPostById(id);
+    if (postId.type) {
+        return { type: 404, message: { message: 'Post does not exist' } };
+    }
+    const { userId } = postId.message.dataValues;
+    console.log('postId', userId);
+    return { type: null, message: post, userId };
+};
+
+module.exports = { createPost, getAllPosts, getPostById, updatePost, deletePost };
