@@ -19,7 +19,10 @@ const getAllPosts = async (req, res) => {
 const findPostById = async (req, res) => {
     const { id } = req.params;
     const postId = await blogPostsServices.getPostById(id);
-    return res.status(200).json(postId);
+    if (postId.type) { 
+        return res.status(404).json(postId.message);
+    }
+    return res.status(200).json(postId.message);
 };
 
 module.exports = { createPost, getAllPosts, findPostById };

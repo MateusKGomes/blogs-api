@@ -48,7 +48,10 @@ const getPostById = async (id) => {
         { model: Category, as: 'categories', through: { attributes: [] } }, 
         ],
     });
-    return findId;
+    if (!findId) {
+        return { type: 404, message: { message: 'Post does not exist' } }; 
+    }
+    return { type: null, message: findId };
 };
 
 module.exports = { createPost, getAllPosts, getPostById };
