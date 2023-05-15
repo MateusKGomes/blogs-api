@@ -1,10 +1,18 @@
 const postValidation = async (req, res, next) => {
-    const { title, content, categoryIds } = req.body;
+    const { title, content } = req.body;
 
-    if (!title || !content || !categoryIds) {
+    if (!title || !content) {
         return res.status(400).json({ message: 'Some required fields are missing' });
     }
     return next();
 };
 
-module.exports = postValidation;
+const categoryValidation = async (req, res, next) => {
+    const { categoryIds } = req.body;
+    if (!categoryIds) {
+        return res.status(400).json({ message: 'Some required fields are missing' });
+    }
+    return next();
+};
+
+module.exports = { postValidation, categoryValidation };

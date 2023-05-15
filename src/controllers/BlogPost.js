@@ -25,4 +25,15 @@ const findPostById = async (req, res) => {
     return res.status(200).json(postId.message);
 };
 
-module.exports = { createPost, getAllPosts, findPostById };
+const updatePost = async (req, res) => {
+    const { title, content } = req.body;
+    const { id } = req.params;
+    const { id: idUser } = req.payload.data;
+    if (idUser !== +id) {
+        return res.status(401).json({ message: 'Unauthorized user' });
+    }
+    const post = await blogPostsServices.updatePost(title, content, id);
+    return res.status(200).json(post.message);
+};
+
+module.exports = { createPost, getAllPosts, findPostById, updatePost };
